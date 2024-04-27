@@ -102,6 +102,5 @@ def main():
             board[x,y]=0
 
     run(board,boardGeometry,generationLimit)
-    gui.printTest()
 if __name__ == "__main__":
     main()
