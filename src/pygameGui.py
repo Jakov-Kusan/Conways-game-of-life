@@ -1,12 +1,28 @@
 import pygame
 
-geometry=0
-def start(windowGeometry):
-    global geometry
+def start(bGeometry,wGeometry):
+    global windowGeometry
+    global boardGeometry
+    global window
+
+    # parameters cant be global
+    boardGeometry=bGeometry
+    windowGeometry=wGeometry
+
     pygame.init() 
-    surface = pygame.display.set_mode(windowGeometry,windowGeometry)
-    geometry=windowGeometry
+    window = pygame.display.set_mode((windowGeometry,windowGeometry))
+
+def clear():
+    global window
+    window.fill((0,0,0))
+
 
 def drawCell(x,y):
-    global geometry
-     pygame.draw.rect(surface, (255,255,255), pygame.Rect(x, y, 1, 1))
+    global windowGeometry
+    global boardGeometry
+    global window
+    
+    ratio = windowGeometry/boardGeometry
+
+    pygame.draw.rect(window, (255,255,255), pygame.Rect(x*ratio, y*ratio, ratio, ratio))
+    pygame.display.flip()
