@@ -3,8 +3,10 @@ pygame_gui=True
 
 if pygame_gui:
     import pygameGui
+    gui = pygameGui
 else:
     import terminalGui
+    gui = terminalGui
 
 def decideCellState(cellState,cellNeighbours):
     if cellNeighbours <2:
@@ -18,30 +20,52 @@ def decideCellState(cellState,cellNeighbours):
 
 def getSurroundingCellNumber(board,x,y):
     surroundingCells=0
-    if board[x+1,y]==1:
-        surroundingCells=surroundingCells+1
+    try:
+        if board[x+1,y]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
 
-    if board[x-1,y]==1:
-       surroundingCells=surroundingCells+1
+    try:
+        if board[x-1,y]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
     
-    if board[x,y+1]==1:
-       surroundingCells=surroundingCells+1
-    
-    if board[x,y-1]==1:
-       surroundingCells=surroundingCells+1
-    
-    if board[x+1,y+1]==1:
-        surroundingCells=surroundingCells+1
+    try:
+        if board[x,y+1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
 
-    if board[x-1,y+1]==1:
-       surroundingCells=surroundingCells+1
+    try:
+        if board[x,y-1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
 
-    if board[x+1,y-1]==1:
-        surroundingCells=surroundingCells+1
+    try:
+        if board[x+1,y+1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
 
-    if board[x-1,y-1]==1:
-       surroundingCells=surroundingCells+1
+    try:
+        if board[x-1,y+1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
 
+    try:
+        if board[x+1,y-1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
+    try:
+        if board[x-1,y-1]==1:
+            surroundingCells=surroundingCells+1
+    except:
+        pass
     
     return surroundingCells
 def run(board,boardGeometry,generationLimit):
@@ -55,7 +79,7 @@ def run(board,boardGeometry,generationLimit):
             for y in range(boardGeometry):
                 newBoard[x,y]=decideCellState(board[x,y],getSurroundingCellNumber(board,x,y))
                 
-        board=NewBoard
+        board=newBoard
 
 
 
@@ -77,9 +101,7 @@ def main():
             # 0 if cell dead, 1 if alive
             board[x,y]=0
 
-
-
-
-    print(board)
+    run(board,boardGeometry,generationLimit)
+    gui.printTest()
 if __name__ == "__main__":
     main()
