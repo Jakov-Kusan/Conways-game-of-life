@@ -56,18 +56,18 @@ def getSurroundingCellNumber(board,x,y):
         if board[x-1,y+1]==1:
             surroundingCells=surroundingCells+1
     except:
-        time.sleep(0)
+        pass
 
     try:
         if board[x+1,y-1]==1:
             surroundingCells=surroundingCells+1
     except:
-        time.sleep(0)
+        pass
     try:
         if board[x-1,y-1]==1:
             surroundingCells=surroundingCells+1
     except:
-        time.sleep(0)
+        pass
     
     return surroundingCells
 
@@ -104,7 +104,7 @@ def main():
 
 
     # boardGeometry*boardGeometry=cell number
-    boardGeometry=100
+    boardGeometry=5
     
     # stop on the 100th generation
     generationLimit=100
