@@ -1,5 +1,5 @@
 # true if you want pygame as gui, false if you want terminal gui
-pygame_gui=Frue
+pygame_gui=False
 
 if pygame_gui:
     import pygameGui
@@ -7,7 +7,6 @@ if pygame_gui:
 else:
     import terminalGui
     gui = terminalGui
-import time
 
 import random
 
@@ -86,7 +85,6 @@ def run(board,boardGeometry,generationLimit):
     for generation in range(generationLimit):
         #drawing output
         updateGui(board,boardGeometry)
-        time.sleep(1)
 
         # For debugging
         #print("Generation",generation)
