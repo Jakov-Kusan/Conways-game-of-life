@@ -1,5 +1,5 @@
 # true if you want pygame as gui, false if you want terminal gui
-pygame_gui=True
+pygame_gui=Frue
 
 if pygame_gui:
     import pygameGui
@@ -8,6 +8,8 @@ else:
     import terminalGui
     gui = terminalGui
 import time
+
+import random
 
 def decideCellState(cellState,cellNeighbours):
     if cellNeighbours <2:
@@ -85,7 +87,9 @@ def run(board,boardGeometry,generationLimit):
         #drawing output
         updateGui(board,boardGeometry)
         time.sleep(1)
-        print("Generation",generation)
+
+        # For debugging
+        #print("Generation",generation)
 
         newBoard={}
         # updating cells
@@ -104,15 +108,15 @@ def main():
 
 
     # boardGeometry*boardGeometry=cell number
-    boardGeometry=10
+    boardGeometry=15
     
     # stop on the 100th generation
     generationLimit=100
 
     for x in range(boardGeometry):
         for y in range(boardGeometry):
-            # 0 if cell dead, 1 if alive
-            board[x,y]=0
+            # 0 if cell dead, 1 if alive            
+            board[x,y]=random.randint(0,1)
 
     
     # starting the gui
