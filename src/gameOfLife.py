@@ -85,7 +85,7 @@ def run(board,boardGeometry,generationLimit):
         #drawing output
         updateGui(board,boardGeometry)
         time.sleep(1)
-        print(generation)
+        print("Generation",generation)
 
         newBoard={}
         # updating cells
@@ -104,7 +104,7 @@ def main():
 
 
     # boardGeometry*boardGeometry=cell number
-    boardGeometry=5
+    boardGeometry=10
     
     # stop on the 100th generation
     generationLimit=100
@@ -112,10 +112,11 @@ def main():
     for x in range(boardGeometry):
         for y in range(boardGeometry):
             # 0 if cell dead, 1 if alive
-            board[x,y]=1
+            board[x,y]=0
+
     
     # starting the gui
-    windowGeometry=1000
+    windowGeometry=600
     gui.start(boardGeometry,windowGeometry)
 
     run(board,boardGeometry,generationLimit)
