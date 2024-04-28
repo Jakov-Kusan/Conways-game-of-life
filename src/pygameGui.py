@@ -15,6 +15,7 @@ def start(bGeometry,wGeometry):
 
 def clear():
     global window
+    time.sleep(1)
     window.fill((0,0,0))
     pygame.display.update()
 
